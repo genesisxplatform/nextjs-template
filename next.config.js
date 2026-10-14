@@ -8,6 +8,10 @@ const isCodeExport = process.env.CNTRL_BUILD_MODE === 'self-hosted';
 // local sdk is active those must resolve to the template's copies.
 const localSdkPath = process.env.LOCAL_SDK_REL_PATH;
 const sdkDir = localSdkPath ? path.resolve(__dirname, localSdkPath) : null;
+// Same idea for a local @cntrl-site/components checkout, resolved to its dist/ so its
+// `build:watch` output is picked up.
+const localComponentsPath = process.env.LOCAL_COMPONENTS_REL_PATH;
+const componentsDir = localComponentsPath ? path.resolve(__dirname, localComponentsPath) : null;
 
 const nextConfig = {
   reactStrictMode: false,
@@ -17,11 +21,17 @@ const nextConfig = {
   assetPrefix: isCodeExport ? './' : undefined,
   ...(sdkDir ? { transpilePackages: ['@gxpl/sdk'] } : {}),
   webpack: (config) => {
-    if (sdkDir) {
+    if (sdkDir || componentsDir) {
       for (const dep of ['react', 'react-dom', 'next', 'styled-jsx']) {
         config.resolve.alias[dep] = path.resolve(__dirname, 'node_modules', dep);
       }
+    }
+    if (sdkDir) {
       config.resolve.alias['@gxpl/sdk'] = path.resolve(sdkDir, 'src/index.ts');
+    }
+    if (componentsDir) {
+      config.resolve.alias['@cntrl-site/components$'] = path.resolve(componentsDir, 'dist/index.mjs');
+      config.resolve.alias['@cntrl-site/components/style/components.css'] = path.resolve(componentsDir, 'dist/components.css');
     }
     return config;
   },
