@@ -8,7 +8,7 @@ const isCodeExport = process.env.CNTRL_BUILD_MODE === 'self-hosted';
 // local sdk is active those must resolve to the template's copies.
 const localSdkPath = process.env.LOCAL_SDK_REL_PATH;
 const sdkDir = localSdkPath ? path.resolve(__dirname, localSdkPath) : null;
-// Same idea for a local @cntrl-site/components checkout, resolved to its dist/ so its
+// Same idea for a local @gxpl/components checkout, resolved to its dist/ so its
 // `build:watch` output is picked up.
 const localComponentsPath = process.env.LOCAL_COMPONENTS_REL_PATH;
 const componentsDir = localComponentsPath ? path.resolve(__dirname, localComponentsPath) : null;
@@ -30,8 +30,8 @@ const nextConfig = {
       config.resolve.alias['@gxpl/sdk'] = path.resolve(sdkDir, 'src/index.ts');
     }
     if (componentsDir) {
-      config.resolve.alias['@cntrl-site/components$'] = path.resolve(componentsDir, 'dist/index.mjs');
-      config.resolve.alias['@cntrl-site/components/style/components.css'] = path.resolve(componentsDir, 'dist/components.css');
+      config.resolve.alias['@gxpl/components$'] = path.resolve(componentsDir, 'dist/index.mjs');
+      config.resolve.alias['@gxpl/components/style/components.css'] = path.resolve(componentsDir, 'dist/components.css');
     }
     return config;
   },
