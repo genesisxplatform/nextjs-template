@@ -10,8 +10,8 @@
     "export": "npm run build"
   },
   "dependencies": {
-    "@gxpl/sdk": "^0.1.5",
-    "next": "^14.2.3",
+    "@gxpl/sdk": "^0.1.6",
+    "next": "^15.5.28",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.63.4"
@@ -20,8 +20,8 @@
     "@types/node": "17.0.35",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
-    "eslint": "8.16.0",
-    "eslint-config-next": "^14.2.3",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.28",
     "typescript": "^5.2.2"
   }
 }
