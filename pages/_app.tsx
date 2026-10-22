@@ -1,7 +1,7 @@
 import '../styles/reset.css';
 import type { AppProps } from 'next/app';
 import { CntrlProvider } from '@gxpl/sdk';
-import '@cntrl-site/components/style/components.css';
+import '@gxpl/components/style/components.css';
 // place your custom items/sections definitions here
 // customItems.define('custom-item', MyCustomItem);
 // customSections.define('custom-section', {
