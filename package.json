@@ -10,7 +10,7 @@
     "export": "npm run build"
   },
   "dependencies": {
-    "@gxpl/sdk": "^0.1.7",
+    "@gxpl/sdk": "^0.1.8",
     "next": "^15.5.28",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
