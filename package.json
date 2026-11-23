@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "npm run build"
+    "export": "npm run build && node scripts/gx-variants.mjs _static",
+    "test": "node --test scripts/gx-variants.test.mjs"
   },
   "dependencies": {
     "@gxpl/sdk": "^0.1.10",

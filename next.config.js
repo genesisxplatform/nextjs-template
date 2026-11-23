@@ -20,6 +20,10 @@ const nextConfig = {
   distDir: '_static',
   assetPrefix: isCodeExport ? './' : undefined,
   ...(sdkDir ? { transpilePackages: ['@gxpl/sdk'] } : {}),
+  // Types still come from the installed @gxpl/sdk, which a local checkout may be ahead of
+  // (a new export, say). With a local sdk the build must not fail on that: the sdk repo
+  // type-checks its own source.
+  ...(sdkDir ? { typescript: { ignoreBuildErrors: true } } : {}),
   webpack: (config) => {
     if (sdkDir || componentsDir) {
       for (const dep of ['react', 'react-dom', 'next', 'styled-jsx']) {
